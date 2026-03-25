@@ -1,1 +1,232 @@
+=================================================================
+ FUNKCIA: hlavni_menu
+=================================================================
 
+TC01: Vyber platnej moznosti z menu - volba 1
+- Popis: Overenie, ze volba cisla 1 v hlavnom menu spusti funkciu pridat_ukol
+- Vstupne podmienky: Program zobrazuje hlavne menu
+- Kroky testu:
+    1. Spustite program
+    2. Overte, ze sa zobrazuje hlavne menu s ponukou voleb (1 - Pridat ukol, 2 - Zobrazit ukoly atd.)
+    3. Zadajte cislo 1 a potvrdte stlacenim klavesy Enter
+- Ocakavany vysledok: Program spusti funkciu pridat_ukol()
+- Skutocny vysledok: Funkcia pridat_ukol() bola spustena a program zobrazil vyzvu k zadaniu noveho ukolu
+- Stav: Pass
+- Poznamky: Tento pripad je dolezity, pretoze overuje zakladnu navigaciu z hlavneho menu a funkcnost jednej z klucovych funkcii programu
+
+---
+
+TC02: Vyber platnej moznosti z menu - volba 2
+- Popis: Overenie, ze volba cisla 2 v hlavnom menu spusti funkciu zobrazit_ukoly
+- Vstupne podmienky: Program zobrazuje hlavne menu
+- Kroky testu:
+    1. Spustite program
+    2. Zadajte cislo 2 a potvrdte Enter
+- Ocakavany vysledok: Program spusti funkciu zobrazit_ukoly()
+- Skutocny vysledok: Funkcia zobrazit_ukoly() bola spustena
+- Stav: Pass
+- Poznamky: Overuje spravnost navigacie na druhu funkciu menu
+
+---
+
+TC03: Vyber platnej moznosti z menu - volba 3
+- Popis: Overenie, ze volba cisla 3 v hlavnom menu spusti funkciu odstranit_ukol
+- Vstupne podmienky: Program zobrazuje hlavne menu
+- Kroky testu:
+    1. Spustite program
+    2. Zadajte cislo 3 a potvrdte Enter
+- Ocakavany vysledok: Program spusti funkciu odstranit_ukol()
+- Skutocny vysledok: Funkcia odstranit_ukol() bola spustena
+- Stav: Pass
+- Poznamky: Overuje spravnost navigacie na tretiu funkciu menu
+
+---
+
+TC04: Vyber platnej moznosti z menu - volba 4 (ukoncenie)
+- Popis: Overenie, ze volba cisla 4 ukonci program
+- Vstupne podmienky: Program zobrazuje hlavne menu
+- Kroky testu:
+    1. Spustite program
+    2. Zadajte cislo 4 a potvrdte Enter
+- Ocakavany vysledok: Program vypise rozluckovu spravu a skonci
+- Skutocny vysledok: Zobrazilo sa "Ukoncuji program. Na shledanou!" a program skoncil
+- Stav: Pass
+- Poznamky: Overuje korektne ukoncenie programu
+
+---
+
+TC05: Zadanie neplatnej volby - cislo mimo rozsahu
+- Popis: Overenie, ze pri zadani neplatneho cisla program upozorni uzivatela a menu sa zobrazi znova
+- Vstupne podmienky: Program zobrazuje hlavne menu
+- Kroky testu:
+    1. Spustite program
+    2. Zadajte cislo 7 a potvrdte Enter
+- Ocakavany vysledok: Program vypise "Neplatna volba! Zadejte cislo 1-4." a znova zobrazi menu
+- Skutocny vysledok: Zobrazilo sa upozornenie a menu sa opakovalo
+- Stav: Pass
+- Poznamky: Dolezity negativny test - program nesmi skoncit ani spadnut pri nespravnom vstupe
+
+---
+
+TC06: Zadanie neplatnej volby - text namiesto cisla
+- Popis: Overenie, ze pri zadani textu program spravne spracuje chybu
+- Vstupne podmienky: Program zobrazuje hlavne menu
+- Kroky testu:
+    1. Spustite program
+    2. Zadajte "abc" a potvrdte Enter
+- Ocakavany vysledok: Program vypise upozornenie a znova zobrazi menu
+- Skutocny vysledok: Zobrazilo sa upozornenie a menu sa opakovalo
+- Stav: Pass
+- Poznamky: Negativny test overujuci odolnost voči nespravnemu vstupu
+
+
+=================================================================
+ FUNKCIA: pridat_ukol
+=================================================================
+
+TC07: Pridanie ukolu s platnym nazvom
+- Popis: Overenie, ze funkcia spravne prida ukol do zoznamu
+- Vstupne podmienky: Zoznam ukolov je prazdny (ukoly = [])
+- Kroky testu:
+    1. Spustite program
+    2. Zadajte volbu 1
+    3. Zadajte nazov ukolu "Nakoupit mléko" a potvrdte Enter
+- Ocakavany vysledok: Program vypise "Ukol 'Nakoupit mléko' byl pridan." a ukol je v zozname
+- Skutocny vysledok: Potvrdenie bolo zobrazene a ukol sa pridal do zoznamu
+- Stav: Pass
+- Poznamky: Zakladny pozitivny test funkcie pridat_ukol
+
+---
+
+TC08: Pridanie viacerych ukolov za sebou
+- Popis: Overenie, ze je mozne pridat viac ukolov a vsetky sa ulozia
+- Vstupne podmienky: Zoznam ukolov je prazdny (ukoly = [])
+- Kroky testu:
+    1. Spustite program
+    2. Zadajte volbu 1, nazov "Ukol A", potvrdte Enter
+    3. Zadajte volbu 1, nazov "Ukol B", potvrdte Enter
+    4. Zadajte volbu 1, nazov "Ukol C", potvrdte Enter
+    5. Zadajte volbu 2 pre zobrazenie zoznamu
+- Ocakavany vysledok: Zoznam obsahuje vsetky 3 ukoly v poradi pridania
+- Skutocny vysledok: Zobrazili sa 3 ukoly ocislovane 1, 2, 3
+- Stav: Pass
+- Poznamky: Overuje, ze funkcia funguje opakovane a neprepisuje predchadzajuce ukoly
+
+---
+
+TC09: Pridanie ukolu s prazdnym nazvom
+- Popis: Overenie spravania programu pri stlaceni Enter bez zadania nazvu
+- Vstupne podmienky: Zoznam ukolov je prazdny
+- Kroky testu:
+    1. Spustite program
+    2. Zadajte volbu 1
+    3. Stlacte Enter bez zadania nazvu
+- Ocakavany vysledok: Program upozorni ze nazov nesmie byt prazdny
+- Skutocny vysledok: Prazdny ukol bol pridany bez upozornenia
+- Stav: Fail
+- Poznamky: Negativny test - program by mal osetrit prazdny vstup
+
+
+=================================================================
+ FUNKCIA: zobrazit_ukoly
+=================================================================
+
+TC10: Zobrazenie zoznamu s ukolmi
+- Popis: Overenie, ze funkcia vypise vsetky ukoly ocislovane
+- Vstupne podmienky: V zozname su 2 ukoly ("Nakoupit mléko", "Uklidit pokoj")
+- Kroky testu:
+    1. Spustite program
+    2. Pridajte 2 ukoly cez volbu 1
+    3. Zadajte volbu 2
+- Ocakavany vysledok: Zobrazi sa:
+    Seznam ukolu:
+    1. Nakoupit mléko
+    2. Uklidit pokoj
+- Skutocny vysledok: Ukoly sa zobrazili spravne ocislovane
+- Stav: Pass
+- Poznamky: Zakladny pozitivny test zobrazenia
+
+---
+
+TC11: Zobrazenie prazdneho zoznamu
+- Popis: Overenie spravania pri zobrazeni prazdneho zoznamu
+- Vstupne podmienky: Zoznam ukolov je prazdny (ukoly = [])
+- Kroky testu:
+    1. Spustite program (nic nepridavajte)
+    2. Zadajte volbu 2
+- Ocakavany vysledok: Program vypise "Seznam ukolu je prazdný."
+- Skutocny vysledok: Sprava o prazdnom zozname sa zobrazila
+- Stav: Pass
+- Poznamky: Hranicny pripad - dolezite overit ze program neskrachuje na prazdnom zozname
+
+
+=================================================================
+ FUNKCIA: odstranit_ukol
+=================================================================
+
+TC12: Odstranenie existujuceho ukolu
+- Popis: Overenie, ze funkcia spravne odstrani ukol podla zadaneho cisla
+- Vstupne podmienky: V zozname su 2 ukoly ("Nakoupit mléko", "Uklidit pokoj")
+- Kroky testu:
+    1. Spustite program a pridajte 2 ukoly
+    2. Zadajte volbu 3
+    3. Zadajte cislo 1 a potvrdte Enter
+- Ocakavany vysledok: Program vypise "Ukol 'Nakoupit mléko' byl odstranen." a zostane 1 ukol
+- Skutocny vysledok: Ukol bol odstraneny, v zozname zostal len "Uklidit pokoj"
+- Stav: Pass
+- Poznamky: Zakladny pozitivny test odstranenia
+
+---
+
+TC13: Odstranenie z prazdneho zoznamu
+- Popis: Overenie spravania pri pokuse o odstranenie z prazdneho zoznamu
+- Vstupne podmienky: Zoznam ukolov je prazdny (ukoly = [])
+- Kroky testu:
+    1. Spustite program (nic nepridavajte)
+    2. Zadajte volbu 3
+- Ocakavany vysledok: Program vypise "Seznam ukolu je prazdný." a nespyta sa na cislo
+- Skutocny vysledok: Sprava sa zobrazila, input() sa nespustil
+- Stav: Pass
+- Poznamky: Hranicny pripad - program nesmie spadnut ani zobrazit input na prazdnom zozname
+
+---
+
+TC14: Zadanie cisla mimo rozsahu pri odstranovani
+- Popis: Overenie spravania pri zadani neplatneho cisla ukolu
+- Vstupne podmienky: V zozname su 2 ukoly
+- Kroky testu:
+    1. Spustite program a pridajte 2 ukoly
+    2. Zadajte volbu 3
+    3. Zadajte cislo 99 a potvrdte Enter
+- Ocakavany vysledok: Program vypise "Neplatné cislo ukolu!" a nic neodstrani
+- Skutocny vysledok: Chybova sprava sa zobrazila, zoznam zostal nezmeneny
+- Stav: Pass
+- Poznamky: Negativny test - overuje validaciu vstupu
+
+---
+
+TC15: Zadanie textu namiesto cisla pri odstranovani
+- Popis: Overenie, ze program neskrachuje pri nečíselnom vstupe
+- Vstupne podmienky: V zozname je aspon 1 ukol
+- Kroky testu:
+    1. Spustite program a pridajte ukol
+    2. Zadajte volbu 3
+    3. Zadajte "abc" a potvrdte Enter
+- Ocakavany vysledok: Program vypise "Zadejte platné cislo!" bez chyby ValueError
+- Skutocny vysledok: Chybova sprava sa zobrazila, program pokracoval normalne
+- Stav: Pass
+- Poznamky: Negativny test - overuje try/except blok v kode
+
+---
+
+TC16: Odstranenie posledneho ukolu v zozname
+- Popis: Overenie, ze po odstraneni posledneho ukolu je zoznam prazdny
+- Vstupne podmienky: V zozname je presne 1 ukol
+- Kroky testu:
+    1. Spustite program a pridajte 1 ukol
+    2. Zadajte volbu 3, potom cislo 1
+    3. Zadajte volbu 2 pre zobrazenie zoznamu
+- Ocakavany vysledok: Ukol sa odstrani a pri zobrazeni sa vypise "Seznam ukolu je prazdný."
+- Skutocny vysledok: Ukol bol odstraneny, zoznam je prazdny
+- Stav: Pass
+- Poznamky: Hranicny pripad - prechod zo zoznamu s 1 prvkom na prazdny zoznam
